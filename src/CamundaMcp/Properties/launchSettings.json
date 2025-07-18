@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "CamundaMcp": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "OTEL_SERVICE_NAME": "sse-server"
+      },
+      "applicationUrl": "http://localhost:64612"
+    }
+  }
+}

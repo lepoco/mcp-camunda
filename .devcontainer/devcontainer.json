@@ -1,0 +1,14 @@
+{
+  "name": "Camunda Dev Container",
+  "dockerComposeFile": ["docker-compose.yml"],
+  "service": "camundamcp",
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-azuretools.vscode-docker"],
+      "settings": {}
+    }
+  },
+  "postCreateCommand": "",
+  "remoteUser": "vscode"
+}

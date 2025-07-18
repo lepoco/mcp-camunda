@@ -1,0 +1,9 @@
+{
+    "inputs": [],
+    "servers": {
+        "mcp-camunda": {
+            "type": "http",
+            "url": "http://localhost:64612"
+        }
+    }
+}
