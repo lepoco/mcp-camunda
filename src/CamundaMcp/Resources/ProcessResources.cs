@@ -8,6 +8,4 @@ namespace CamundaMcp.Resources;
 [McpServerResourceType]
 public class ProcessResources
 {
-    [McpServerResource, Description("A direct text resource")]
-    public static string DirectTextResource() => "This is a direct resource";
 }
