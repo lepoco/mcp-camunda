@@ -1,12 +1,9 @@
-﻿// This Source Code Form is subject to the terms of the MIT License.
+// This Source Code Form is subject to the terms of the MIT License.
 // If a copy of the MIT was not distributed with this file, You can obtain one at https://opensource.org/licenses/MIT.
-// Copyright (C) Leszek Pomianowski and Camunda MCP Server.
+// Copyright (C) Leszek Pomianowski and Camunda MCP Server Contributors.
 // All Rights Reserved.
 
 using AppHost.Models;
-using Aspire.Hosting;
-using Aspire.Hosting.ApplicationModel;
-using Aspire.Hosting.Lifecycle;
 
 namespace AppHost.Extensions;
 
@@ -20,11 +17,6 @@ internal static class DistributedApplicationBuilderExtensions
             {
                 Username = builder.AddParameter("npgsql-user", secret: true),
                 Password = builder.AddParameter("npgsql-password", secret: true),
-            },
-            RabbitMq = new Credentials.ResourceCredentials
-            {
-                Username = builder.AddParameter("rabbitmq-user", secret: true),
-                Password = builder.AddParameter("rabbitmq-password", secret: true),
             },
         };
     }

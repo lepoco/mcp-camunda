@@ -11,7 +11,7 @@
   <ItemGroup Condition="$(IsPackable)">
     <None Include="$(BuildToolsDirectory)nuget.png" Pack="true" PackagePath="\Icon.png" Visible="False" />
     <None Include="$(RepositoryDirectory)ThirdPartyNotices.txt" Pack="true" PackagePath="\" Visible="False" />
-    <None Include="$(RepositoryDirectory)LICENSE.md" Pack="true" PackagePath="\LICENSE.md" Visible="False" />
+    <None Include="$(RepositoryDirectory)LICENSE" Pack="true" PackagePath="\License.md" Visible="False" />
     <None Include="$(RepositoryDirectory)README.md" Pack="true" PackagePath="\README.md" Visible="False" />
   </ItemGroup>
   <Target Name="AddCommitHashToAssemblyAttributes" BeforeTargets="GetAssemblyAttributes">
@@ -25,19 +25,4 @@
       </AssemblyAttribute>
     </ItemGroup>
   </Target>
-  <!-- Define NETSTANDARD2_1_OR_GREATER for .NET Standard 2.1 targets and above -->
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'net7.0' OR '$(TargetFramework)' == 'net8.0' OR '$(TargetFramework)' == 'net9.0' OR '$(TargetFramework)' == 'net10.0'">
-    <DefineConstants>NETSTANDARD2_1_OR_GREATER</DefineConstants>
-  </PropertyGroup>
-  <!-- Configure trimming for projects on .NET 6 and above -->
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'net8.0' OR '$(TargetFramework)' == 'net9.0' OR '$(TargetFramework)' == 'net10.0'">
-    <IsTrimmable>true</IsTrimmable>
-    <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
-    <EnableAotAnalyzer>true</EnableAotAnalyzer>
-    <EnableSingleFileAnalyzer>true</EnableSingleFileAnalyzer>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(SourceLinkEnabled)' == 'true' AND '$(GeneratePackageOnBuild)' == 'true'">
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>$(RepositoryDirectory)\src\lepo.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
 </Project>

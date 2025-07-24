@@ -1,62 +1,76 @@
-# Camunda MCP Server
+# 🔄 Camunda MCP Server
 
-[Created with ❤ in Poland by lepo.co](https://lepo.co/) and [wonderful open-source community](https://github.com/lepoco/mcp-camunda/graphs/contributors)  
-A Model Context Protocol (MCP) server for Camunda.
+_Your Agentic Gateway to Camunda BPM._
 
-Provides access to your Camunda instance and the surrounding ecosystem.
+[Created with ❤ in Poland by lepo.co](https://lepo.co/) and [the awesome open-source community](https://github.com/lepoco/mcp-camunda/graphs/contributors).  
+This repository provides a powerful set of tools to interact with the Camunda 7 Community Edition Engine using the Model Context Protocol (MCP). Whether you're automating workflows, querying process instances, or integrating with external systems, Camunda MCP Server is your agentic solution for seamless interaction with Camunda.
 
-## Features
+### 🛠️ Available Server Tools
 
-The following features are currently available in the MCP server. This list is for informational purposes only and does not represent a roadmap or commitment to future features.
+| Tool               | Description                                                 |
+| ------------------ | ----------------------------------------------------------- |
+| `list_definitions` | List deployed Camunda definitions.                          |
+| `list_instances`   | List active instances of selected Camunda process.          |
+| `count_instances`  | Count active instances of selected Camunda process.         |
+| `list_variables`   | List variables of the selected Camunda process.             |
+| `count_variables`  | Count variables of the selected Camunda process.            |
+| `list_incidents`   | Lists variables of the selected Camunda process.            |
+| `count_incidents`  | Count variables of the selected Camunda process.            |
+| `list_user_tasks`  | Lists user tasks of the selected Camunda process.           |
+| `count_user_tasks` | Count user tasks of the selected Camunda process.           |
+| `resolve_incident` | Requests the Camunda process engine to resolve an incident. |
 
-### Process Definitions
+### 🐳 Run the server with Docker
 
-- **List process definitions**: Retrieve all process definitions deployed in Camunda.
-- **Get process definition by ID**: Fetch details of a specific process definition using its unique identifier.
-- **Start a process instance**: Start a new instance of a process definition.
+Build the image:
 
-### Process Instances
+```bash
+docker buildx build ./ -t mcp/camunda --no-cache
+# or
+dotnet publish ./src/Camunda.Mcp/Camunda.Mcp.csproj -c Release /t:PublishContainer
+```
 
-- **List process instances**: Retrieve all active process instances.
-- **Get process instance by ID**: Fetch details of a specific process instance.
-- **Terminate a process instance**: End a running process instance.
+Run the container:
 
-### Tasks
+```bash
+docker run -d -i --rm --name mcp-camunda mcp/camunda
+# or for HTTP mode:
+docker run -d --name mcp-camunda mcp/camunda -e MODE=Http -e CAMUNDA_HOST=http://host.docker.internal:8080/ -p 64623:8080
+```
 
-- **List tasks**: Retrieve all tasks available for processing.
-- **Get task by ID**: Fetch details of a specific task.
-- **Complete a task**: Mark a task as completed and move the process forward.
+Example MCP config (`.mcp.json`):
 
-### Variables
+```json
+{
+  "servers": {
+    "camunda": {
+      "type": "stdio",
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "mcp/camunda",
+        "-e",
+        "CAMUNDA_HOST=http://host.docker.internal:8080/engine-rest/"
+      ]
+    }
+  },
+  "inputs": []
+}
+```
 
-- **Get process variables**: Retrieve variables associated with a process instance.
-- **Set process variables**: Update or create variables for a process instance.
+## Code of Conduct
 
-### Incidents
+This project has adopted the code of conduct defined by the Contributor Covenant to clarify expected behavior in our community.
 
-- **List incidents**: Retrieve all incidents in the Camunda engine.
-- **Resolve an incident**: Mark an incident as resolved.
+## License
 
-## Tools
+Cammunda is a registered trademark of [Camunda Services GmbH Zossener Strasse 55-58, 10961 Berlin, Germany](https://camunda.com/).
 
-| Tool                         | Category            | Description                                    |
-| ---------------------------- | ------------------- | ---------------------------------------------- |
-| `list_process_definitions`   | Process Definitions | List all process definitions.                  |
-| `get_process_definition`     | Process Definitions | Get a process definition by ID.                |
-| `start_process_instance`     | Process Definitions | Start a new process instance.                  |
-| `list_process_instances`     | Process Instances   | List all active process instances.             |
-| `get_process_instance`       | Process Instances   | Get a process instance by ID.                  |
-| `terminate_process_instance` | Process Instances   | Terminate a running process instance.          |
-| `list_tasks`                 | Tasks               | List all tasks.                                |
-| `get_task`                   | Tasks               | Get a task by ID.                              |
-| `complete_task`              | Tasks               | Complete a task.                               |
-| `get_process_variables`      | Variables           | Get variables for a process instance.          |
-| `set_process_variables`      | Variables           | Set variables for a process instance.          |
-| `list_incidents`             | Incidents           | List all incidents.                            |
-| `resolve_incident`           | Incidents           | Resolve an incident.                           |
-| `query_historical_data`      | History             | Query historical data for processes and tasks. |
+It's used in this project as an information that the tools provided here are compatible with Camunda 7 Community Edition Engine, which is an open-source project licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
-## Copyright
+<https://github.com/camunda/camunda-bpm-platform>
 
-Camunda trademarks are trademarks of Camunda Services GmbH and belong to Camunda Services GmbH.
-https://camunda.com/
+**Camunda MCP Server** is free and open source software licensed under **MIT License**. You can use it in private and commercial projects.  
+Keep in mind that you must include a copy of the license in your project.

@@ -10,6 +10,9 @@
 *.userosscache
 *.sln.docstates
 
+# Rider
+.idea
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -17,7 +20,6 @@
 mono_crash.*
 
 # Build results
-bin/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
@@ -83,8 +85,6 @@ StyleCopReport.xml
 *.pgc
 *.pgd
 *.rsp
-# but not Directory.Build.rsp, as it configures directory-level build defaults
-!Directory.Build.rsp
 *.sbr
 *.tlb
 *.tli

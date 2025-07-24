@@ -1,17 +1,13 @@
-﻿// This Source Code Form is subject to the terms of the MIT License.
+// This Source Code Form is subject to the terms of the MIT License.
 // If a copy of the MIT was not distributed with this file, You can obtain one at https://opensource.org/licenses/MIT.
-// Copyright (C) Leszek Pomianowski and Camunda MCP Server.
+// Copyright (C) Leszek Pomianowski and Camunda MCP Server Contributors.
 // All Rights Reserved.
-
-using Aspire.Hosting.ApplicationModel;
 
 namespace AppHost.Models;
 
 public sealed class Credentials
 {
     public required ResourceCredentials Postgres { get; init; }
-
-    public required ResourceCredentials RabbitMq { get; init; }
 
     public sealed class ResourceCredentials
     {

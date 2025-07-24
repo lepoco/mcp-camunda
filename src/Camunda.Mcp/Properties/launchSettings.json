@@ -1,0 +1,25 @@
+{
+  "profiles": {
+    "ModelContextProtocol (HTTP)": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "OTEL_SERVICE_NAME": "sse-server",
+        "MODE": "Http",
+        "CAMUNDA_HOST": "https://camunda-tinad-d.asseco.apps.peg01-openshift.kompakt.pl/"
+      },
+      "applicationUrl": "http://localhost:64622",
+      "launchUrl": "http://localhost:64622/healthz"
+    },
+    "ModelContextProtocol (Stdio)": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "OTEL_SERVICE_NAME": "sse-server",
+        "MODE": "Stdio"
+      }
+    }
+  }
+}

@@ -1,12 +1,10 @@
 // This Source Code Form is subject to the terms of the MIT License.
 // If a copy of the MIT was not distributed with this file, You can obtain one at https://opensource.org/licenses/MIT.
-// Copyright (C) Leszek Pomianowski and Camunda MCP Server.
+// Copyright (C) Leszek Pomianowski and Camunda MCP Server Contributors.
 // All Rights Reserved.
 
 using AppHost.Extensions;
 using AppHost.Models;
-using Aspire.Hosting;
-using Aspire.Hosting.ApplicationModel;
 
 IDistributedApplicationBuilder builder = DistributedApplication.CreateBuilder(args);
 
@@ -28,7 +26,7 @@ if (!builder.Environment.IsProduction())
 
 IResourceBuilder<ContainerResource> camunda = builder
     .AddContainer("camunda", "camunda/camunda-bpm-platform", "run-7.23.0")
-    .WithHttpEndpoint(port: null, targetPort: 8080, name: "dashboard")
+    .WithHttpEndpoint(port: 8080, targetPort: 8080, name: "dashboard")
     .WithArgs("./camunda.sh", "--rest", "--webapps")
     .WithEnvironment("DB_DRIVER", "org.postgresql.Driver")
     .WithEnvironment(async context =>
@@ -56,9 +54,10 @@ IResourceBuilder<ContainerResource> camunda = builder
     .WithLifetime(ContainerLifetime.Persistent);
 
 _ = builder
-    .AddProject<CamundaMcp>("mcp-camunda")
+    .AddProject<Camunda_Mcp>("mcp-camunda")
     .WithEnvironment("MODE", "http")
-    .WithEnvironment("CAMUNDA_HOST", camunda.GetEndpoint("dashboard"));
+    .WithEnvironment("CAMUNDA_HOST", camunda.GetEndpoint("dashboard"))
+    .WaitFor(camunda);
 
 await using DistributedApplication app = builder.Build();
 

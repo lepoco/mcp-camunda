@@ -15,6 +15,6 @@
     <PackageReference Include="Aspire.Hosting.Redis" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CamundaMcp\CamundaMcp.csproj" />
+    <ProjectReference Include="..\Camunda.Mcp\Camunda.Mcp.csproj" />
   </ItemGroup>
 </Project>

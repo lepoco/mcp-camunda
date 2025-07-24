@@ -4,21 +4,18 @@
     <BuildToolsDirectory>$(RepositoryDirectory)build\</BuildToolsDirectory>
   </PropertyGroup>
   <PropertyGroup>
-    <Version>1.0.0-preview.1</Version>
-    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <Version>1.0.0</Version>
   </PropertyGroup>
   <PropertyGroup>
-    <Company>Leszek Pomianowski and Open-Source Contributors</Company>
-    <Authors>Leszek Pomianowski and Open-Source Contributors</Authors>
-    <Product>Camunda.Client</Product>
-    <CommonTags>camunda;client;service;task;user;task;camundaclient;</CommonTags>
+    <Company>lepo.co</Company>
+    <Authors>lepo.co</Authors>
+    <Product>Camunda MCP server</Product>
+    <CommonTags>lepoco;mcp;camunda;server</CommonTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Copyright>(c) Leszek Pomianowski and Open-Source Contributors. All rights reserved.</Copyright>
-    <PackageProjectUrl>https://github.com/lepoco/camunda</PackageProjectUrl>
-    <PackageReleaseNotes>https://github.com/lepoco/camunda/releases</PackageReleaseNotes>
-    <PackageIcon>Icon.png</PackageIcon>
-    <PackageIconUrl>https://github.com/lepoco/camunda/main/build/nuget.png</PackageIconUrl>
+    <Copyright>(c) lepo.co | Leszek Pomianowski and Camunda MCP server Contributors. All rights reserved.</Copyright>
+    <PackageProjectUrl>https://github.com/lepoco/mcp-camunda</PackageProjectUrl>
+    <PackageReleaseNotes>https://github.com/lepoco/mcp-camunda/releases</PackageReleaseNotes>
   </PropertyGroup>
   <PropertyGroup>
     <NuGetAudit>true</NuGetAudit>
@@ -45,33 +42,6 @@
     <IsCoreProject Condition="$(IsTestProject)">False</IsCoreProject>
     <IsCoreProject Condition="'$(IsCoreProject)' == ''">True</IsCoreProject>
   </PropertyGroup>
-  <PropertyGroup>
-    <IsPackable>true</IsPackable>
-    <IsPublishable>true</IsPublishable>
-    <ContinuousIntegrationBuild>$(TF_BUILD)</ContinuousIntegrationBuild>
-  </PropertyGroup>
-  <Choose>
-    <When Condition="$(IsCoreProject)">
-      <PropertyGroup>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-      </PropertyGroup>
-    </When>
-    <Otherwise>
-      <PropertyGroup>
-        <IsPackable>false</IsPackable>
-        <IsPublishable>false</IsPublishable>
-        <NoWarn>$(NoWarn);CS8002;SA0001</NoWarn>
-      </PropertyGroup>
-    </Otherwise>
-  </Choose>
-  <!-- Include PolySharp to generate polyfills for all projects (on their .NET Standard 2.x targets) -->
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'net472'">
-    <PackageReference Include="PolySharp">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>build; analyzers</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
   <Choose>
     <When Condition="'$(SourceLinkEnabled)' != 'false'">
       <PropertyGroup>

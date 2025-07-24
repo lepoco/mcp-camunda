@@ -15,8 +15,25 @@ indent_size = 4
 indent_style = space
 
 # New line preferences
-end_of_line = unset
+end_of_line = crlf
 insert_final_newline = false
+dotnet_style_operator_placement_when_wrapping = beginning_of_line
+dotnet_style_coalesce_expression = true:suggestion
+dotnet_style_null_propagation = true:suggestion
+dotnet_style_prefer_is_null_check_over_reference_equality_method = true:suggestion
+dotnet_style_prefer_auto_properties = true:silent
+dotnet_style_object_initializer = true:suggestion
+dotnet_style_collection_initializer = true:suggestion
+dotnet_style_prefer_simplified_boolean_expressions = true:suggestion
+dotnet_style_prefer_conditional_expression_over_assignment = true:silent
+dotnet_style_prefer_conditional_expression_over_return = true:silent
+dotnet_style_explicit_tuple_names = true:suggestion
+dotnet_style_prefer_inferred_tuple_names = true:suggestion
+dotnet_style_prefer_inferred_anonymous_type_member_names = true:suggestion
+dotnet_style_prefer_compound_assignment = true:suggestion
+dotnet_style_prefer_simplified_interpolation = true:suggestion
+dotnet_style_prefer_collection_expression = when_types_loosely_match:suggestion
+dotnet_style_namespace_match_folder = true:suggestion
 
 #### Build files ####
 
@@ -45,15 +62,15 @@ insert_final_newline = true
 [*.cs]
 
 #### File Header Template ####
-file_header_template = This Source Code Form is subject to the terms of the MIT License.\nIf a copy of the MIT was not distributed with this file, You can obtain one at https://opensource.org/licenses/MIT.\nCopyright (C) Leszek Pomianowski and Camunda MCP Server.\nAll Rights Reserved.
+file_header_template = This Source Code Form is subject to the terms of the MIT License.\nIf a copy of the MIT was not distributed with this file, You can obtain one at https://opensource.org/licenses/MIT.\nCopyright (C) Leszek Pomianowski and Camunda MCP Server Contributors.\nAll Rights Reserved.
 
 #### .NET Coding Conventions ####
 
 # this. and Me. preferences
-dotnet_style_qualification_for_event = false:silent
-dotnet_style_qualification_for_field = false:silent
-dotnet_style_qualification_for_method = false:silent
-dotnet_style_qualification_for_property = false:silent
+dotnet_style_qualification_for_event = false:none
+dotnet_style_qualification_for_field = false:none
+dotnet_style_qualification_for_method = false:none
+dotnet_style_qualification_for_property = false:none
 
 # Language keywords vs BCL types preferences
 dotnet_style_predefined_type_for_locals_parameters_members = true:warning
@@ -95,17 +112,17 @@ dotnet_style_readonly_field = true:warning
 
 # var preferences
 csharp_style_var_elsewhere = false:warning
-csharp_style_var_for_built_in_types = false:none
-csharp_style_var_when_type_is_apparent = false:none
+csharp_style_var_for_built_in_types = false:warning
+csharp_style_var_when_type_is_apparent = false:warning
 
 # Expression-bodied members
-csharp_style_expression_bodied_accessors = false:silent
+csharp_style_expression_bodied_accessors = true:silent
 csharp_style_expression_bodied_constructors = false:silent
-csharp_style_expression_bodied_indexers = false:silent
+csharp_style_expression_bodied_indexers = true:silent
 csharp_style_expression_bodied_lambdas = true:silent
 csharp_style_expression_bodied_methods = false:silent
 csharp_style_expression_bodied_operators = false:silent
-csharp_style_expression_bodied_properties = false:silent
+csharp_style_expression_bodied_properties = true:silent
 
 # Pattern matching preferences
 csharp_style_prefer_pattern_matching = true:suggestion
@@ -119,11 +136,11 @@ csharp_style_conditional_delegate_call = true:suggestion
 csharp_preferred_modifier_order = public,private,protected,internal,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,volatile,async
 
 # Code-block preferences
-csharp_prefer_braces = true:suggestion
-csharp_using_directive_placement = outside_namespace:warning
-csharp_style_namespace_declarations = file_scoped:warning
-csharp_style_unused_value_assignment_preference = discard_variable:warning
-csharp_style_unused_value_expression_statement_preference = discard_variable:warning
+csharp_prefer_braces = true:silent
+csharp_using_directive_placement = outside_namespace:silent
+csharp_style_namespace_declarations = block_scoped:silent
+csharp_style_unused_value_assignment_preference = discard_variable:none
+csharp_style_unused_value_expression_statement_preference = discard_variable:none
 csharp_style_allow_blank_lines_between_consecutive_braces_experimental = false:warning
 
 # Expression-level preferences
@@ -147,7 +164,7 @@ csharp_indent_block_contents = true
 csharp_indent_braces = false
 csharp_indent_case_contents = true
 csharp_indent_case_contents_when_block = false
-csharp_indent_labels = no_change
+csharp_indent_labels = one_less_than_current
 csharp_indent_switch_labels = true
 
 # Space preferences
@@ -225,9 +242,9 @@ dotnet_naming_style.prefix_interface_interface_with_i.required_prefix           
 # Naming Rules
 
 # Async
-dotnet_naming_rule.async_methods_end_in_async.severity                            = silent
+dotnet_naming_rule.async_methods_end_in_async.severity = silent
 dotnet_naming_rule.async_methods_end_in_async.symbols                             = any_async_methods
-dotnet_naming_rule.async_methods_end_in_async.style                               = end_in_async
+dotnet_naming_rule.async_methods_end_in_async.style = end_in_async
 
 dotnet_naming_symbols.any_async_methods.applicable_kinds                          = method
 dotnet_naming_symbols.any_async_methods.applicable_accessibilities                = *
@@ -237,45 +254,45 @@ dotnet_naming_style.end_in_async.required_suffix                                
 dotnet_naming_style.end_in_async.capitalization                                   = pascal_case
 
 # Constant fields must be PascalCase
-dotnet_naming_rule.constant_fields_must_be_pascal_case.severity                   = silent
+dotnet_naming_rule.constant_fields_must_be_pascal_case.severity = silent
 dotnet_naming_rule.constant_fields_must_be_pascal_case.symbols                    = constant_fields
-dotnet_naming_rule.constant_fields_must_be_pascal_case.style                      = pascal_case
+dotnet_naming_rule.constant_fields_must_be_pascal_case.style = pascal_case
 # Public, internal and protected readonly fields must be PascalCase
-dotnet_naming_rule.non_private_readonly_fields_must_be_pascal_case.severity       = silent
+dotnet_naming_rule.non_private_readonly_fields_must_be_pascal_case.severity = silent
 dotnet_naming_rule.non_private_readonly_fields_must_be_pascal_case.symbols        = non_private_readonly_fields
-dotnet_naming_rule.non_private_readonly_fields_must_be_pascal_case.style          = pascal_case
+dotnet_naming_rule.non_private_readonly_fields_must_be_pascal_case.style = pascal_case
 # Static readonly fields must be PascalCase
-dotnet_naming_rule.static_readonly_fields_must_be_pascal_case.severity            = silent
+dotnet_naming_rule.static_readonly_fields_must_be_pascal_case.severity = silent
 dotnet_naming_rule.static_readonly_fields_must_be_pascal_case.symbols             = static_readonly_fields
-dotnet_naming_rule.static_readonly_fields_must_be_pascal_case.style               = pascal_case
+dotnet_naming_rule.static_readonly_fields_must_be_pascal_case.style = pascal_case
 # Private readonly fields must be camelCase
-dotnet_naming_rule.private_readonly_fields_must_be_camel_case.severity            = silent
+dotnet_naming_rule.private_readonly_fields_must_be_camel_case.severity = silent
 dotnet_naming_rule.private_readonly_fields_must_be_camel_case.symbols             = private_readonly_fields
-dotnet_naming_rule.private_readonly_fields_must_be_camel_case.style               = camel_case
+dotnet_naming_rule.private_readonly_fields_must_be_camel_case.style = camel_case
 # Public and internal fields must be PascalCase
-dotnet_naming_rule.public_internal_protected_fields_must_be_pascal_case.severity  = silent
+dotnet_naming_rule.public_internal_protected_fields_must_be_pascal_case.severity = silent
 dotnet_naming_rule.public_internal_protected_fields_must_be_pascal_case.symbols   = public_internal_protected_fields
-dotnet_naming_rule.public_internal_protected_fields_must_be_pascal_case.style     = pascal_case
+dotnet_naming_rule.public_internal_protected_fields_must_be_pascal_case.style = pascal_case
 # Private and protected fields must be camelCase
-dotnet_naming_rule.private_fields_must_be_camel_case.severity                     = silent
+dotnet_naming_rule.private_fields_must_be_camel_case.severity = silent
 dotnet_naming_rule.private_fields_must_be_camel_case.symbols                      = private_protected_fields
-dotnet_naming_rule.private_fields_must_be_camel_case.style                        = prefix_private_field_with_underscore
+dotnet_naming_rule.private_fields_must_be_camel_case.style = prefix_private_field_with_underscore
 # Public members must be capitalized
-dotnet_naming_rule.public_members_must_be_capitalized.severity                    = silent
+dotnet_naming_rule.public_members_must_be_capitalized.severity = silent
 dotnet_naming_rule.public_members_must_be_capitalized.symbols                     = public_symbols
-dotnet_naming_rule.public_members_must_be_capitalized.style                       = first_upper
+dotnet_naming_rule.public_members_must_be_capitalized.style = first_upper
 # Parameters must be camelCase
-dotnet_naming_rule.parameters_must_be_camel_case.severity                         = silent
+dotnet_naming_rule.parameters_must_be_camel_case.severity = silent
 dotnet_naming_rule.parameters_must_be_camel_case.symbols                          = parameters
-dotnet_naming_rule.parameters_must_be_camel_case.style                            = camel_case
+dotnet_naming_rule.parameters_must_be_camel_case.style = camel_case
 # Class, struct, enum and delegates must be PascalCase
-dotnet_naming_rule.non_interface_types_must_be_pascal_case.severity               = silent
+dotnet_naming_rule.non_interface_types_must_be_pascal_case.severity = silent
 dotnet_naming_rule.non_interface_types_must_be_pascal_case.symbols                = non_interface_types
-dotnet_naming_rule.non_interface_types_must_be_pascal_case.style                  = pascal_case
+dotnet_naming_rule.non_interface_types_must_be_pascal_case.style = pascal_case
 # Interfaces must be PascalCase and start with an 'I'
-dotnet_naming_rule.interface_types_must_be_prefixed_with_i.severity               = silent
+dotnet_naming_rule.interface_types_must_be_prefixed_with_i.severity = silent
 dotnet_naming_rule.interface_types_must_be_prefixed_with_i.symbols                = interface_types
-dotnet_naming_rule.interface_types_must_be_prefixed_with_i.style                  = prefix_interface_interface_with_i
+dotnet_naming_rule.interface_types_must_be_prefixed_with_i.style = prefix_interface_interface_with_i
 # prefix_private_field_with_underscore - Private fields must be prefixed with _
 dotnet_naming_style.prefix_private_field_with_underscore.capitalization           = camel_case
 dotnet_naming_style.prefix_private_field_with_underscore.required_prefix          = _
@@ -355,6 +372,7 @@ dotnet_diagnostic.SA1009.severity = none
 
 # Hide warnings when using the new() expression from C# 9.
 dotnet_diagnostic.SA1000.severity = none
+
 dotnet_diagnostic.SA1011.severity = none
 dotnet_diagnostic.SA1101.severity = none
 
@@ -386,29 +404,10 @@ dotnet_diagnostic.SA1629.severity = none
 dotnet_diagnostic.SA1633.severity = none
 dotnet_diagnostic.SA1634.severity = none
 dotnet_diagnostic.SA1652.severity = none
-
-
-# Additional Stylecop Analyzers
-dotnet_diagnostic.SA1111.severity = none
-dotnet_diagnostic.SA1121.severity = none
-dotnet_diagnostic.SA1204.severity = none
-dotnet_diagnostic.SA1208.severity = none
-dotnet_diagnostic.CS1591.severity = none # Missing XML comment for publicly visible type or member
-                                         # 15000+ warnings in the solution
-dotnet_diagnostic.CA1510.severity = none # Use ArgumentNullException throw helper
-                                         # doesn't work with older versions of .NET
-                                         
-dotnet_diagnostic.SA1518.severity = none
-dotnet_diagnostic.SA1615.severity = none
-dotnet_diagnostic.SA1502.severity = none
-dotnet_diagnostic.SA1010.severity = none # Opening square brackets should not be preceded by a space
-                                         # conflicts with collection expressions and IDE0028
-
-# Suppress some ValueConverter warnings
-dotnet_diagnostic.WPF0073.severity = none # Add ValueConversion attribute (unknown types)
-dotnet_diagnostic.WPF0071.severity = none # Add ValueConversion attribute
-dotnet_diagnostic.WPF0070.severity = none # Add default field to converter
-
-# Suppress some IDE warnings
-dotnet_diagnostic.IDE0130.severity = none # Hide warnings about namespaces not matching folder structure
-dotnet_diagnostic.IDE0290.severity = none # Use primary constructor
+csharp_prefer_simple_using_statement = true:suggestion
+csharp_style_prefer_method_group_conversion = true:silent
+csharp_style_prefer_top_level_statements = true:silent
+csharp_style_prefer_primary_constructors = true:suggestion
+csharp_prefer_system_threading_lock = true:suggestion
+csharp_style_expression_bodied_local_functions = false:silent
+csharp_style_prefer_null_check_over_type_check = true:suggestion
